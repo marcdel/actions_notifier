@@ -17,7 +17,7 @@ defmodule ActionsNotifierWeb.Router do
   scope "/", ActionsNotifierWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", UserSettingsLive, :edit
   end
 
   # Other scopes may use custom stacks.

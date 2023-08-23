@@ -1,5 +1,5 @@
 defmodule ActionsNotifierWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :actions_notifier
+  use Desktop.Endpoint, otp_app: :actions_notifier
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.

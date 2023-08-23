@@ -7,6 +7,8 @@ defmodule ActionsNotifier.Application do
 
   @impl true
   def start(_type, _args) do
+    Desktop.identify_default_locale(ActionsNotifierWeb.Gettext)
+
     children = [
       # Start the Telemetry supervisor
       ActionsNotifierWeb.Telemetry,
@@ -17,7 +19,12 @@ defmodule ActionsNotifier.Application do
       # Start Finch
       {Finch, name: ActionsNotifier.Finch},
       # Start the Endpoint (http/https)
-      ActionsNotifierWeb.Endpoint
+      ActionsNotifierWeb.Endpoint,
+      {Desktop.Window,
+        app: :actions_notifier,
+        id: ActionsNotifierWindow,
+        url: &ActionsNotifierWeb.Endpoint.url/0
+      }
       # Start a worker by calling: ActionsNotifier.Worker.start_link(arg)
       # {ActionsNotifier.Worker, arg}
     ]
